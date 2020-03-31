@@ -1,0 +1,138 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Title: SOP LaTeX Template
+%% Author: Soonho Kong / soonhok@cs.cmu.edu
+%% Created: 2012-11-12
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[letterpaper]{article}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{fontspec, color, enumerate, sectsty}
+\usepackage[normalem]{ulem}
+
+\usepackage{verbatim}
+
+% INCL FONTS
+\input{fonts.tex}
+
+% formatting
+\usepackage{indentfirst}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+  {0pt}{0.5\baselineskip}{0.5\baselineskip}
+ 
+\titlespacing*{\paragraph}
+  {0pt}{0.5\baselineskip}{0.5\baselineskip}
+
+\usepackage[parfill]{parskip}
+
+\usepackage{sectsty}
+\sectionfont{\fontsize{13}{15}\selectfont} % heading font size
+
+% colors
+\usepackage[usenames,dvipsnames,svgnames]{xcolor}
+\usepackage{soul}
+
+% bibtex
+\usepackage{biblatex}
+\addbibresource{bibliography.bib}
+
+% CUSTOM COMMANDS
+\input{commands.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                      YOUR INFORMATION
+%
+%      PLEASE EDIT THE FOLLOWING LINES ACCORDINGLY!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\soptitle}{Statement of Purpose}
+\newcommand{\yourname}{Jacob Danovitch}
+\newcommand{\youremail}{jacob.danovitch@carleton.ca}
+
+\newcommand{\template}{mila}
+\input{templates/\template/info.tex} % SCHOOL SPECIFIC INFORMATION
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[bookmarks, colorlinks, breaklinks, pdftitle={\yourname - \soptitle - \universityname},pdfauthor={\yourname}, unicode]{hyperref}
+
+\begin{comment}
+\usepackage[bookmarks, 
+            colorlinks, 
+            breaklinks,unicode,
+            pdftex,
+            pdfauthor={\yourname},
+            pdftitle={\yourname - \soptitle - \universityname},
+            pdfsubject={Statement of purpose},
+            pdfkeywords={Statement of purpose, SOP, graduate school, \universityname},
+            % pdfproducer={Latex with hyperref, or other system},
+            % pdfcreator={pdflatex, or other tool}
+            ]{hyperref}
+ \end{comment}
+            
+\hypersetup{linkcolor=magneta,citecolor=magenta,filecolor=magenta,urlcolor=[named]{WildStrawberry}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                      Title and Author Name
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{center}{\LARGE \scshape \soptitle}\end{center}
+\begin{center}\vspace{0.2em} {\large \yourname\\}
+  {\youremail}\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                      SOP Body
+% NOTE: Use \amper instead of \&
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+\begin{small}
+\begin{quote}[The Sun Also Rises]{Ernest Hemingway}
+    %\small\centering
+    \inlinequote{How did you become bankrupt?}, Bill asked. \inlinequote{Two ways,} Mike said. \inlinequote{Gradually, then suddenly.}
+\end{quote}
+\end{small}
+\end{center}
+
+\section*{Introduction}
+\input{sections/introduction.tex}
+
+\section{Research Experience}
+% \note{Emphasize what you learned+enjoyed}
+I am currently supervised by Professor Majid Komeili, focusing on natural language processing. My experience so far confirms how much I enjoy working on problems in this domain. I am particularly interested by the intersection of natural language and computational social science, examining language dynamics and user safety in online communities. My other areas of focus are machine teaching and interpretability in representation learning.
+
+% \vspace{-0.35cm}
+
+\paragraph{\textbf{Malicious Content on Social Media}}
+\input{sections/research/disinformation.tex}
+
+% \vspace{-0.35cm}
+
+% Aligning Social Discourse to News Events
+\paragraph{\textbf{Mining Event-Specific Social Commentary}}
+\input{sections/research/socialmatching.tex}
+
+% \vspace{-0.35cm}
+
+\paragraph{\textbf{Trouble with the Curve}}
+\input{sections/research/twtc.tex}
+
+\section{Industry Experience}
+
+I am currently a data science intern at Microsoft Search, Assistance, and Intelligence (MSAI). Last summer, I developed a system to detect meeting requests in emails sent with Microsoft Outlook. A substantial challenge was being able to handle incomplete emails for real-time classification. Using both word and character level information with a bi-LSTM improved performance for partial inputs without compromising performance on fully drafted emails. The model was deployed as a service and integrated into a local build of Outlook. The work was part of a broader project, for which a patent application has been filed and is currently pending approval.
+
+\section{Coursework}
+\input{sections/coursework.tex}
+
+\section{Teaching Experience}
+\input{sections/teaching.tex}
+
+\section{Conclusion}
+\input{sections/conclusion.tex}
+
+\newpage
+\printbibliography
+\nocite{*}
+\end{document}

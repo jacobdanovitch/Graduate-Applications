@@ -1,0 +1,47 @@
+%% QUOTATIONS
+
+\newcommand{\inlinequote}[1]{``\textit{#1}''}
+
+% https://tex.stackexchange.com/questions/356898/quote-with-author-reference-at-the-end
+\let\oldquote\quote
+\let\endoldquote\endquote
+\renewenvironment{quote}[2][]
+  {\if\relax\detokenize{#1}\relax
+     \def\quoteauthor{#2}%
+   \else
+     \def\quoteauthor{#2~---~#1}%
+   \fi
+   \oldquote}
+  {\par\nobreak\smallskip\hfill(\quoteauthor)%
+   \endoldquote\addvspace{\bigskipamount}}
+
+
+%% COLOR-CODING
+
+% COLORS
+
+\definecolor{dodgerblue}{rgb}{0.12, 0.56, 1.0} % note
+
+\definecolor{caribbeangreen}{rgb}{0.0, 0.8, 0.6} % outline
+
+\definecolor{goldenpoppy}{rgb}{0.99, 0.76, 0.0} % citation needed
+
+\definecolor{lightsalmon}{rgb}{1.0, 0.63, 0.48} % cut candidate
+
+% NOTE COMMANDS
+
+\newcommand{\hlc}[2][yellow]{       
+    {\sethlcolor{#1} \hl{#2}} 
+}
+
+\newcommand{\highlight}[3]{
+    \textcolor{#2}{\hlc[#1]{#3}}
+}
+
+\newcommand{\note}[1]{\highlight{dodgerblue}{black}{#1}}
+
+\newcommand{\outline}[1]{\highlight{caribbeangreen}{black}{#1}}
+
+\newcommand{\tocite}[1]{\highlight{goldenpoppy}{black}{#1}}
+
+\newcommand{\cut}[1]{\highlight{lightsalmon}{black}{#1}}
